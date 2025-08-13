@@ -18,7 +18,7 @@ export class AuthService {
     private readonly jwtService: JwtService,
   ) {}
 
-  async register(dto: CreateUserDto): Promise<User> {
+async register(dto: CreateUserDto) {
   const existingUser = await this.userService.findByEmail(dto.email);
   if (existingUser) {
     throw new UnauthorizedException('Email already registered');
@@ -28,7 +28,7 @@ export class AuthService {
   if (!tenantId && dto.tenantName) {
     const tenant = await this.tenantService.create({
       name: dto.tenantName,
-      slug: dto.slug || dto.tenantName.toLowerCase().replace(/\s+/g, '-'), 
+      slug: dto.slug || dto.tenantName.toLowerCase().replace(/\s+/g, '-'),
     });
     tenantId = tenant.id;
   }
@@ -38,13 +38,27 @@ export class AuthService {
   }
 
   const hashedPassword = await bcrypt.hash(dto.password, 10);
-  return this.userService.create({
+  const user = await this.userService.create({
     email: dto.email,
     password: hashedPassword,
     name: dto.name,
     tenantId: tenantId,
   });
+
+  // ✅ Create a token just like login
+  const payload = {
+    sub: user.id,
+    email: user.email,
+    tenantId: user.tenantId,
+    roles: user.roles,
+  };
+
+  return {
+    access_token: this.jwtService.sign(payload),
+    user,
+  };
 }
+
 
   async validateUser(email: string, pass: string) {
     const user = await this.userService.findByEmail(email);
