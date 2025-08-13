@@ -19,32 +19,33 @@ export class AuthService {
   ) {}
 
   async register(dto: CreateUserDto): Promise<User> {
-    const existingUser = await this.userService.findByEmail(dto.email);
-    if (existingUser) {
-      throw new UnauthorizedException('Email already registered');
-    }
-
-    let tenantId = dto.tenantId;
-    if (!tenantId && dto.name) {
-      const tenant = await this.tenantService.create({
-        name: dto.name,
-        slug: dto.name.toLowerCase().replace(/\s+/g, '-'),
-      });
-      tenantId = tenant.id;
-    }
-
-    if (!tenantId) {
-      throw new BadRequestException('Tenant information is required');
-    }
-    const hashedPassword = await bcrypt.hash(dto.password, 10);
-    return this.userService.create({
-      email: dto.email,
-      password: hashedPassword,
-      name: dto.name,
-      tenantId: tenantId,
-      roles: dto.roles || ['owner'],
-    });
+  const existingUser = await this.userService.findByEmail(dto.email);
+  if (existingUser) {
+    throw new UnauthorizedException('Email already registered');
   }
+
+  let tenantId = dto.tenantId;
+  if (!tenantId && dto.tenantName) {
+    const tenant = await this.tenantService.create({
+      name: dto.tenantName,
+      slug: dto.slug || dto.tenantName.toLowerCase().replace(/\s+/g, '-'), 
+    });
+    tenantId = tenant.id;
+  }
+
+  if (!tenantId) {
+    throw new BadRequestException('Tenant information is required');
+  }
+
+  const hashedPassword = await bcrypt.hash(dto.password, 10);
+  return this.userService.create({
+    email: dto.email,
+    password: hashedPassword,
+    name: dto.name,
+    tenantId: tenantId,
+  });
+}
+
   async validateUser(email: string, pass: string) {
     const user = await this.userService.findByEmail(email);
     if (user && await bcrypt.compare(pass, user.password)) {

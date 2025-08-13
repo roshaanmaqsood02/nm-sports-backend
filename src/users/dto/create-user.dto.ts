@@ -1,4 +1,11 @@
-import { IsEmail, IsNotEmpty, IsOptional, IsString, MinLength, IsArray } from 'class-validator';
+import {
+  IsEmail,
+  IsNotEmpty,
+  IsOptional,
+  IsString,
+  MinLength,
+  IsArray,
+} from 'class-validator';
 
 export class CreateUserDto {
   @IsEmail()
@@ -20,4 +27,12 @@ export class CreateUserDto {
   @IsNotEmpty()
   @IsString()
   tenantId: string; // required because of entity relationship
+
+  @IsNotEmpty()
+  @IsString()
+  tenantName?: string;
+
+  @IsNotEmpty()
+  @IsString()
+  slug?: string;
 }
