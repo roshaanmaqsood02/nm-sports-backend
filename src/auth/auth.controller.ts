@@ -47,7 +47,8 @@ export class AuthController {
   @UseGuards(AuthGuard('jwt'))
   @Get('users/me')
   async getProfile(@Request() req) {
-    return req.user;
+    const user = await this.usersService.findByIdWithTenant(req.user.sub);
+    return user;
   }
 
   // Update a user
