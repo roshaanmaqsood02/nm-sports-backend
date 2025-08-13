@@ -1,0 +1,22 @@
+### register the user
+POST http://localhost:4000/auth/users/register
+Content-Type: application/json
+
+{
+    "name": "newuser1",
+    "email": "user@example.com",
+    "password": "password123",
+    "tenantId":"5f96d429-6720-46a1-985d-e77e7ac0849e"
+}
+
+### login the user
+POST http://localhost:4000/auth/users/login
+Content-Type: application/json
+
+{
+    "email": "user@examplr.com",
+    "password": "password123"
+}
+
+### get user
+GET http://localhost:4000/auth/users

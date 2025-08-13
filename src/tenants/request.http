@@ -1,0 +1,11 @@
+### create tenant
+POST http://localhost:4000/tenants
+Content-Type: application/json
+
+{
+  "name": "New Tenant2",
+  "slug": "new-tenant2"
+}
+
+### get tenant
+GET http://localhost:4000/tenants
