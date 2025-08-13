@@ -3,8 +3,8 @@ POST http://localhost:4000/tenants
 Content-Type: application/json
 
 {
-  "name": "Global Talker",
-  "slug": "conversation-app"
+  "name": "Abaya Aura",
+  "slug": "E-Commerce"
 }
 
 ### get tenant

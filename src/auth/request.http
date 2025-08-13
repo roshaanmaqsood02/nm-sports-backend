@@ -3,10 +3,10 @@ POST http://localhost:4000/auth/users/register
 Content-Type: application/json
 
 {
-    "name": "newuser1",
-    "email": "user@example.com",
-    "password": "password123",
-    "tenantId":"5f96d429-6720-46a1-985d-e77e7ac0849e"
+    "name": "newUser4",
+    "email": "user@example4.com",
+    "password": "password1234",
+    "tenantId":"437c3b9f-458c-4cc8-a649-8a4095d78d75"
 }
 
 ### login the user
@@ -14,9 +14,13 @@ POST http://localhost:4000/auth/users/login
 Content-Type: application/json
 
 {
-    "email": "user@examplr.com",
-    "password": "password123"
+    "email": "user@example4.com",
+    "password": "password1234"
 }
 
 ### get user
 GET http://localhost:4000/auth/users
+
+### me
+GET http://localhost:4000/auth/users/me
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIzNWQyYjVhZC05ZGUxLTQ4ODAtOWM4NS1kOTc0OTNlOTJiMjUiLCJlbWFpbCI6InVzZXJAZXhhbXBsZTQuY29tIiwidGVuYW50SWQiOiI0MzdjM2I5Zi00NThjLTRjYzgtYTY0OS04YTQwOTVkNzhkNzUiLCJyb2xlcyI6WyJvd25lciJdLCJpYXQiOjE3NTUwNjk0MzEsImV4cCI6MTc1NTE1NTgzMX0.6fd7XWJgoyjbbcxgTpWQp6b2kyNf0CVlc2BzinBtJ9s

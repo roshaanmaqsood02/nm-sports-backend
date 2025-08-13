@@ -1,14 +1,20 @@
 import * as bcrypt from 'bcryptjs';
-import { Injectable, UnauthorizedException } from '@nestjs/common';
+import {
+  Injectable,
+  UnauthorizedException,
+  BadRequestException,
+} from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { User } from 'src/entities/user.entity';
 import { UserService } from 'src/users/users.service';
 import { CreateUserDto } from 'src/users/dto/create-user.dto';
+import { TenantsService } from 'src/tenants/tenants.service';
 
 @Injectable()
 export class AuthService {
   constructor(
     private readonly userService: UserService,
+    private readonly tenantService: TenantsService,
     private readonly jwtService: JwtService,
   ) {}
 
@@ -18,21 +24,34 @@ export class AuthService {
       throw new UnauthorizedException('Email already registered');
     }
 
+    let tenantId = dto.tenantId;
+    if (!tenantId && dto.name) {
+      const tenant = await this.tenantService.create({
+        name: dto.name,
+        slug: dto.name.toLowerCase().replace(/\s+/g, '-'),
+      });
+      tenantId = tenant.id;
+    }
+
+    if (!tenantId) {
+      throw new BadRequestException('Tenant information is required');
+    }
     const hashedPassword = await bcrypt.hash(dto.password, 10);
     return this.userService.create({
-      ...dto,
+      email: dto.email,
       password: hashedPassword,
+      name: dto.name,
+      tenantId: tenantId,
+      roles: dto.roles || ['owner'],
     });
   }
-
-  async validateUser(email: string, password: string): Promise<User | null> {
+  async validateUser(email: string, pass: string) {
     const user = await this.userService.findByEmail(email);
-    if (!user) return null;
-
-    const isMatch = await bcrypt.compare(password, user.password);
-    if (!isMatch) return null;
-
-    return user;
+    if (user && await bcrypt.compare(pass, user.password)) {
+      const { password, ...result } = user;
+      return result;
+    }
+    return null;
   }
 
   async login(user: User) {
