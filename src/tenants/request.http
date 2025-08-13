@@ -9,3 +9,6 @@ Content-Type: application/json
 
 ### get tenant
 GET http://localhost:4000/tenants
+
+### Delete the tenant
+DELETE http://localhost:4000/tenants/c7e2c1c1-5188-435b-aef9-3bd24836a654

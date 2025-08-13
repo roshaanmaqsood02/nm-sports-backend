@@ -20,6 +20,6 @@ export class User extends BaseEntity {
   @JoinColumn({ name: 'tenant_id' })
   tenant: Tenant;
 
-  @Column({ name: 'tenant_id' })
+  @Column({ name: 'tenant_id', nullable: true })
   tenantId: string;
 }

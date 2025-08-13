@@ -10,6 +10,6 @@ export class Tenant extends BaseEntity {
   @Column({ unique: true })
   slug: string;
 
-  @OneToMany(() => User, user => user.tenant)
-  users: User[];
+ @OneToMany(() => User, (user) => user.tenant, { onDelete: 'SET NULL' })
+users: User[];
 }
