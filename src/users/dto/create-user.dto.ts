@@ -22,11 +22,11 @@ export class CreateUserDto {
   @IsOptional()
   @IsArray()
   @IsString({ each: true })
-  roles?: string[]; // default will be handled in entity
+  roles?: string[];
 
   @IsNotEmpty()
   @IsString()
-  tenantId: string; // required because of entity relationship
+  tenantId: string;
 
   @IsNotEmpty()
   @IsString()

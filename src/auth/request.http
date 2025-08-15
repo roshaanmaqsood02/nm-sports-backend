@@ -3,10 +3,10 @@ POST http://localhost:4000/auth/users/register
 Content-Type: application/json
 
 {
-    "name": "chris jordan",
-    "email": "chris@jordon.com",
-    "password": "password1234",
-    "tenantId":"e2bd519a-e175-4253-9bfd-f6ee723bb188"
+    "name": "Danish Ali",
+    "email": "danish@gmail.com",
+    "password": "qweqwe",
+    "tenantId":"fcc5d2d4-1b34-4e0a-8cb7-ba739bd2eeb9"
 
 }
 ### login the user
@@ -14,7 +14,7 @@ POST http://localhost:4000/auth/users/login
 Content-Type: application/json
 
 {
-    "email": "roshaan@gmail.com",
+    "email": "anas@gmail.com",
     "password": "qweqwe"
 }
 
@@ -23,7 +23,6 @@ GET http://localhost:4000/auth/users
 
 ### me
 GET http://localhost:4000/auth/users/me
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIzNWQyYjVhZC05ZGUxLTQ4ODAtOWM4NS1kOTc0OTNlOTJiMjUiLCJlbWFpbCI6InVzZXJAZXhhbXBsZTQuY29tIiwidGVuYW50SWQiOiI0MzdjM2I5Zi00NThjLTRjYzgtYTY0OS04YTQwOTVkNzhkNzUiLCJyb2xlcyI6WyJvd25lciJdLCJpYXQiOjE3NTUwNjk0MzEsImV4cCI6MTc1NTE1NTgzMX0.6fd7XWJgoyjbbcxgTpWQp6b2kyNf0CVlc2BzinBtJ9s'
-
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1OWJjODgyOC1jNTJlLTQ5YjUtOTM0Zi0yNDY1ZGYwYTFiNWUiLCJ1c2VySWQiOiI1OWJjODgyOC1jNTJlLTQ5YjUtOTM0Zi0yNDY1ZGYwYTFiNWUiLCJlbWFpbCI6ImFuYXNAZ21haWwuY29tIiwidGVuYW50SWQiOiI3Mjg1ZWJmZS1lNjJmLTQ0NDMtYTYxNi1mMjhmMjQ4Y2MzZTEiLCJyb2xlcyI6WyJ1c2VyIl0sImlhdCI6MTc1NTIzNzYxNCwiZXhwIjoxNzU1MzI0MDE0fQ.B6nHPvzP-WJXRmwPwTHBlIR5FG7El9kpqVJyf-BwXv4
 ### delete the user
-DELETE http://localhost:4000/auth/users/08fdd29e-3e84-4780-827a-dcc1d7c7bb99
+DELETE http://localhost:4000/auth/users/6d9495ad-7ab7-456c-b63d-11fb43b19657

@@ -8,6 +8,7 @@ import {
   Param,
   Request,
   UseGuards,
+  NotFoundException,
 } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { AuthGuard } from '@nestjs/passport';
@@ -44,10 +45,16 @@ export class AuthController {
   }
 
   // ME
-  @UseGuards(AuthGuard('jwt'))
+  @UseGuards(JwtAuthGuard)
   @Get('users/me')
   async getProfile(@Request() req) {
-    const user = await this.usersService.findByIdWithTenant(req.user.sub);
+    // Use req.user.userId instead of sub
+    const user = await this.usersService.findByIdWithTenant(req.user.userId);
+
+    if (!user) {
+      throw new NotFoundException('User not found');
+    }
+
     return user;
   }
 

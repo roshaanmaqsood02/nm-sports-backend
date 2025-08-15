@@ -54,13 +54,13 @@ export class UserService {
       relations: ['tenant'],
     });
   }
-  
+
   async findByIdWithTenant(userId: string) {
-  return this.userRepository.findOne({
-    where: { id: userId },
-    relations: ['tenant'], 
-  });
-}
+    return this.userRepository.findOne({
+      where: { id: userId },
+      relations: ['tenant'],
+    });
+  }
 
   async update(id: string, data: Partial<User>): Promise<User> {
     const user = await this.findOne(id);
