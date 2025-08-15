@@ -22,7 +22,7 @@ import { Tenant } from './entities/tenant.entity';
         password: configService.get('DB_PASSWORD'),
         database: configService.get('DB_DATABASE'),
         entities: [User, Tenant],
-        synchronize: true, // Set to false in production
+        synchronize: true,
       }),
       inject: [ConfigService],
     }),
