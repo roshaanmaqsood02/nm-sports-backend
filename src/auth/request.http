@@ -14,7 +14,7 @@ POST http://localhost:4000/auth/users/login
 Content-Type: application/json
 
 {
-    "email": "anas@gmail.com",
+    "email": "sarfraz@gmail.com",
     "password": "qweqwe"
 }
 
@@ -25,4 +25,4 @@ GET http://localhost:4000/auth/users
 GET http://localhost:4000/auth/users/me
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1OWJjODgyOC1jNTJlLTQ5YjUtOTM0Zi0yNDY1ZGYwYTFiNWUiLCJ1c2VySWQiOiI1OWJjODgyOC1jNTJlLTQ5YjUtOTM0Zi0yNDY1ZGYwYTFiNWUiLCJlbWFpbCI6ImFuYXNAZ21haWwuY29tIiwidGVuYW50SWQiOiI3Mjg1ZWJmZS1lNjJmLTQ0NDMtYTYxNi1mMjhmMjQ4Y2MzZTEiLCJyb2xlcyI6WyJ1c2VyIl0sImlhdCI6MTc1NTIzNzYxNCwiZXhwIjoxNzU1MzI0MDE0fQ.B6nHPvzP-WJXRmwPwTHBlIR5FG7El9kpqVJyf-BwXv4
 ### delete the user
-DELETE http://localhost:4000/auth/users/6d9495ad-7ab7-456c-b63d-11fb43b19657
+DELETE http://localhost:4000/auth/users/85a09781-cb04-4da9-99c0-b3839f365f0f

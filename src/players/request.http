@@ -1,0 +1,24 @@
+### create a player
+POST http://localhost:4000/players
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI4OTNkM2I0OS0xNWUxLTQ3NzItOGQyNi02MDRkNTdlY2NmNDYiLCJlbWFpbCI6InNhcmZyYXpAZ21haWwuY29tIiwidGVuYW50SWQiOiIwYWUyMmMwMS0xYjJjLTQxNDgtYTBkYS0zZjNmYzQ4NjE4MTgiLCJyb2xlcyI6WyJ1c2VyIl0sImlhdCI6MTc1NTUxOTk4OCwiZXhwIjoxNzU1NjA2Mzg4fQ.lEcq6SlbnSiQIM1NRhbplOxphGD8gTfOsYV4WF9vMUo
+Content-Type: application/json
+
+{
+  "firstName": "Cristiano",
+  "lastName": "Ronaldo",
+  "dateOfBirth": "1985-02-05",
+  "position": "Forward",
+  "jerseyNumber": 7,
+  "nationality": "Portuguese",
+  "height": 187,
+  "weight": 83,
+  "isActive": true
+}
+
+### get player
+GET http://localhost:4000/players
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI4OTNkM2I0OS0xNWUxLTQ3NzItOGQyNi02MDRkNTdlY2NmNDYiLCJlbWFpbCI6InNhcmZyYXpAZ21haWwuY29tIiwidGVuYW50SWQiOiIwYWUyMmMwMS0xYjJjLTQxNDgtYTBkYS0zZjNmYzQ4NjE4MTgiLCJyb2xlcyI6WyJ1c2VyIl0sImlhdCI6MTc1NTUxOTk4OCwiZXhwIjoxNzU1NjA2Mzg4fQ.lEcq6SlbnSiQIM1NRhbplOxphGD8gTfOsYV4WF9vMUo
+
+### get single player
+GET http://localhost:4000/players/3d4267f6-af08-4615-b4b3-716a4e35bc3b
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI4OTNkM2I0OS0xNWUxLTQ3NzItOGQyNi02MDRkNTdlY2NmNDYiLCJlbWFpbCI6InNhcmZyYXpAZ21haWwuY29tIiwidGVuYW50SWQiOiIwYWUyMmMwMS0xYjJjLTQxNDgtYTBkYS0zZjNmYzQ4NjE4MTgiLCJyb2xlcyI6WyJ1c2VyIl0sImlhdCI6MTc1NTUxOTk4OCwiZXhwIjoxNzU1NjA2Mzg4fQ.lEcq6SlbnSiQIM1NRhbplOxphGD8gTfOsYV4WF9vMUo

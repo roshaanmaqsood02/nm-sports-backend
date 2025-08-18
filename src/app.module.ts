@@ -8,6 +8,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { TenantModule } from './tenants/tenants.module';
 import { User } from './entities/user.entity';
 import { Tenant } from './entities/tenant.entity';
+import { PlayersModule } from './players/players.module';
+import { Player } from './entities/player.entity';
 
 @Module({
   imports: [
@@ -21,12 +23,12 @@ import { Tenant } from './entities/tenant.entity';
         username: configService.get('DB_USERNAME'),
         password: configService.get('DB_PASSWORD'),
         database: configService.get('DB_DATABASE'),
-        entities: [User, Tenant],
+        entities: [User, Tenant, Player],
         synchronize: true,
       }),
       inject: [ConfigService],
     }),
-    AuthModule, UsersModule, TenantModule],
+    AuthModule, UsersModule, TenantModule, PlayersModule],
   controllers: [AppController],
   providers: [AppService],
 })
